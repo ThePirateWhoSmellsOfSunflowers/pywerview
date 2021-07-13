@@ -75,6 +75,12 @@ class ADObject:
                     return False
             raise AttributeError
 
+    def __setattr__(self, attr, value):
+        try:
+            self.__dict__[attr] = value
+        except KeyError:
+            raise AttributeError
+
     # In this method, we try to pretty print common AD attributes
     def __str__(self):
         s = str()
